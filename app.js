@@ -21,7 +21,8 @@ const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
 const userRouter = require("./routes/user.js");
 
-const dbUrlWOSRV = process.env.ATLASDB_URL_WOSRV;
+const dbUrl = process.env.ATLASDB_URL_WOSRV;
+
 main()
     .then((res) => {
         console.log("Connected to DB");
@@ -31,7 +32,7 @@ main()
     });
 
 async function main() {
-    await mongoose.connect(dbUrlWOSRV);
+    await mongoose.connect(dbUrl);
 };
 
 app.set("view engine", "ejs");
@@ -43,7 +44,7 @@ app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
 
 const store = MongoStore.create({
-    mongoUrl : dbUrlWOSRV,
+    mongoUrl : dbUrl,
     crypto : {
         secret : process.env.SECRET,
     },
@@ -114,6 +115,6 @@ app.use((err, req, res, next) => {
     // res.status(statusCode).send(message);
 });
 
-app.listen(8080, () => {
+app.listen(port, () => {
     console.log("Server is listening at Port: 8080");
 });
