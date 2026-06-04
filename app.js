@@ -67,11 +67,11 @@ const sessionOptions = {
     },
 };
 
-// app.get("/", (req,res) => {
-//     console.log(dbUrl);
-//     res.send("Hi, I am root");
+app.get("/", (req,res) => {
+    console.log(dbUrl);
+    res.send("/listing");
 
-// });
+});
 
 app.use(session(sessionOptions));
 app.use(flash());
