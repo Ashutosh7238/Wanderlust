@@ -96,8 +96,7 @@ app.use((req,res,next) => {
 // })
 
 app.get("/", (req,res) => {
-    console.log("Root route hit");
-    res.send("home route working");
+    res.redirect("/listing");
 });
 
 app.use("/listing", listingRouter);
