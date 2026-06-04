@@ -96,8 +96,7 @@ app.use((req,res,next) => {
 // })
 
 app.get("/", (req,res) => {
-    console.log(dbUrl);
-    res.send("/listing");
+    res.redirect("/listing");
 });
 
 app.use("/listing", listingRouter);
