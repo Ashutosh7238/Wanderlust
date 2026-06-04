@@ -67,11 +67,6 @@ const sessionOptions = {
     },
 };
 
-app.get("/", (req,res) => {
-    console.log(dbUrl);
-    res.send("/listing");
-
-});
 
 app.use(session(sessionOptions));
 app.use(flash());
@@ -99,6 +94,11 @@ app.use((req,res,next) => {
 //     let user1 = await User.register(fakeUser, "HelloWorld");
 //     res.send(user1);
 // })
+
+app.get("/", (req,res) => {
+    console.log(dbUrl);
+    res.send("/listing");
+});
 
 app.use("/listing", listingRouter);
 app.use("/listing/:id/reviews", reviewRouter)
